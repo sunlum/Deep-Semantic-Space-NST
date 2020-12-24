@@ -1,7 +1,8 @@
 Baseline：Neural Style Transfer(CVPR 2015) AND Neural Image Analogies
 
 The prior space segmentation and illumination information are used to guide the correct style migration.In addition, this method is introduced as an additional Loss Function and implemented in an optimized way.
-
+The VGG model file is in the directory, and you can train a new VGG model yourself if necessary.
+All the images we use are in the image folder.
 ====================algorithm procedure=====================
 ? Initialize the target image X as white noise or content image
 ? Given a content image, execute:
@@ -71,26 +72,26 @@ eg:make_image_analogy.py  ../examples/images/inputssemlight/oil_semlight.png ../
 
 （3）other parameters：
 
- * --width  默认值为content图像宽，希望output图像的宽度
- * --height 默认值为content图像高，希望output图像的高度
- * --scales 默认值为3，分为3种尺度执行3次风格迁移
- * --iters  默认值为7，每个尺度图象迭代的次数
- * --min-scale   最低尺度大小，默认值为content图像大小的1/3*1/3
+ * --width  Target image width, the default value is content image width
+ * --height Target image width,the default value is content image height
+ * --scales default value is 3，style transfer algorithms are performed at three scales
+ * --iters  default value is 7，the number of iterations per scale image
+ * --min-scale   Minimum scale size，default value is 1/3*1/3 of the content image size
 
- * --output-full 输出中间迭代图像时，是否按照全图像大小输出
+ * --output-full Whether the intermediate iteration image is output in full image size?
 
- * --analogy-w  深度语义损失函数整体的权重，默认值为5.0
- * --analogy-layers  语义semlight图像在CNN中相互匹配的层数，默认值为['conv2_1', 'conv3_1','conv4_1']
+ * --analogy-w  Weight of the overall deep semantic loss(DSS)，default =5.0
+ * --analogy-layers  Selected layers that semlight images match in CNN，default = ['conv2_1', 'conv3_1','conv4_1']
 
- * --b-content-w   内容损失函数整体的权重，默认值为0.05
- * --content-layers  内容损失生效的层数(深层较好)，默认值为['conv3_1','conv4_1']
+ * --b-content-w   Weight of the overall content loss，default = 0.05
+ * --content-layers  Selected layers of the style loss，default = ['conv3_1','conv4_1']
 
- * --nstyle-w 内容损失函数整体的权重，默认值为10.0
- * --nstyle-layers 内容损失生效的层数(深层较好)，默认值为['conv2_1', 'conv3_1', 'conv4_1', 'conv5_1']
+ * --nstyle-w  Weight of the overall style loss，default = 10.0
+ * --nstyle-layers  Selected layers of the style loss，default = ['conv2_1', 'conv3_1', 'conv4_1', 'conv5_1']
 
- * --tv-w   目标输出图像像素内在不变形损失total variation的权重
- * --vgg-weights    VGG模型所在的位置和名字，已下载和设定好
+ * --tv-w   The target output image pixel loses the weight of total variation without intrinsic deformation
+ * --vgg-weights   The location and name of the VGG model have been downloaded and set
 
 （4）output image： DSS-basedStyleTransfer/my_outputs 
-（5）Neural Image Analogies https://raw.githubusercontent.com/awentzonline/image-analogies 相同。
+（5）Neural Image Analogies https://raw.githubusercontent.com/awentzonline/image-analogies    Code operating environment
 
